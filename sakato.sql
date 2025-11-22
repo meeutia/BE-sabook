@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Nov 09, 2025 at 02:27 PM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- Host: localhost:3306
+-- Generation Time: Nov 22, 2025 at 03:44 PM
+-- Server version: 8.0.30
+-- PHP Version: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -28,11 +28,11 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `barang` (
-  `id_barang` char(36) NOT NULL,
-  `nama_barang` varchar(255) NOT NULL,
-  `stok_tersedia` int(11) NOT NULL,
-  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
-  `updated_at` datetime NOT NULL DEFAULT current_timestamp()
+  `id_barang` char(36) COLLATE utf8mb4_general_ci NOT NULL,
+  `nama_barang` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `stok_tersedia` int NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -55,11 +55,11 @@ INSERT INTO `barang` (`id_barang`, `nama_barang`, `stok_tersedia`, `created_at`,
 --
 
 CREATE TABLE `gambar_ruangan` (
-  `id_gambar_ruangan` char(36) NOT NULL,
-  `id_ruangan` char(36) NOT NULL,
-  `gambar` varchar(255) NOT NULL,
-  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
-  `updated_at` datetime NOT NULL DEFAULT current_timestamp()
+  `id_gambar_ruangan` char(36) COLLATE utf8mb4_general_ci NOT NULL,
+  `id_ruangan` char(36) COLLATE utf8mb4_general_ci NOT NULL,
+  `gambar` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -67,12 +67,15 @@ CREATE TABLE `gambar_ruangan` (
 --
 
 INSERT INTO `gambar_ruangan` (`id_gambar_ruangan`, `id_ruangan`, `gambar`, `created_at`, `updated_at`) VALUES
-('3a07fae7-775a-4621-8882-d574daef9b5f', 'e2558546-9ed8-49ac-af27-5439516eebeb', '1762275009598-basecamp.jpg', '2025-11-04 23:50:09', '2025-11-04 23:50:09'),
+('3a07fae7-775a-4621-8882-d574daef9b5f', '408a34e5-d98c-4627-8fe4-8c90893daca3', '1762275009598-basecamp.jpg', '2025-11-04 23:50:09', '2025-11-04 23:50:09'),
 ('59be6981-b988-11f0-a474-f85ea01d1a4f', '408a34e5-d98c-4627-8fe4-8c90893daca3', '1759950545939-basecamp.jpg', '2025-11-04 21:12:52', '2025-11-04 21:12:52'),
-('b006df78-b988-11f0-a474-f85ea01d1a4f', '6fd5fa49-00d2-4bcb-b00c-773636d4ce12', '1760967508966-ruangan.jpg', '2025-11-04 21:15:16', '2025-11-04 21:15:16'),
-('b006e6e4-b988-11f0-a474-f85ea01d1a4f', 'e31a115b-d3f4-42e5-9088-c889a2b1dafb', '1759949964287-ruang seminar.jpg', '2025-11-04 21:15:16', '2025-11-04 21:15:16'),
-('bfead384-b988-11f0-a474-f85ea01d1a4f', 'f081c100-298c-4495-8333-24b954442211', '1759951834289-gazebo.jpg', '2025-11-04 21:15:43', '2025-11-04 21:15:43'),
-('c61f10b3-4994-4fdd-a299-6d08197b840c', 'e2558546-9ed8-49ac-af27-5439516eebeb', '1762275009596-ruangan.jpg', '2025-11-04 23:50:09', '2025-11-04 23:50:09');
+('74291d39-c7ae-11f0-88e9-04d4c47e61a2', 'f081c100-298c-4495-8333-24b954442211', '1762274725540-outdoor.jpg', '2025-11-22 21:20:53', '2025-11-22 21:20:53'),
+('9e3e0b3f-c7ac-11f0-88e9-04d4c47e61a2', 'e31a115b-d3f4-42e5-9088-c889a2b1dafb', '1759949964134-ruang rapat.jpg', '2025-11-22 21:07:45', '2025-11-22 21:07:45'),
+('b006df78-b988-11f0-a474-f85ea01d1a4f', '408a34e5-d98c-4627-8fe4-8c90893daca3', '1760967508966-basecamp.jpg', '2025-11-04 21:15:16', '2025-11-04 21:15:16'),
+('b006e6e4-b988-11f0-a474-f85ea01d1a4f', 'e31a115b-d3f4-42e5-9088-c889a2b1dafb', '1759949964287-ruang rapat.jpg', '2025-11-04 21:15:16', '2025-11-04 21:15:16'),
+('b1e3cff2-c7ae-11f0-88e9-04d4c47e61a2', 'f081c100-298c-4495-8333-24b954442211', '1762274768406-outdoor.jpg', '2025-11-22 21:22:37', '2025-11-22 21:22:37'),
+('bfead384-b988-11f0-a474-f85ea01d1a4f', 'f081c100-298c-4495-8333-24b954442211', '1759951834289-outdoor.jpg', '2025-11-04 21:15:43', '2025-11-04 21:15:43'),
+('fe50e4bd-c7ac-11f0-88e9-04d4c47e61a2', 'e31a115b-d3f4-42e5-9088-c889a2b1dafb', '1759949964234-ruang rapat.jpg', '2025-11-22 21:10:26', '2025-11-22 21:10:26');
 
 -- --------------------------------------------------------
 
@@ -81,18 +84,18 @@ INSERT INTO `gambar_ruangan` (`id_gambar_ruangan`, `id_ruangan`, `gambar`, `crea
 --
 
 CREATE TABLE `pengajuan` (
-  `id_pengajuan` char(36) NOT NULL,
-  `id_user` char(36) NOT NULL,
-  `id_ruangan` char(36) NOT NULL,
+  `id_pengajuan` char(36) COLLATE utf8mb4_general_ci NOT NULL,
+  `id_user` char(36) COLLATE utf8mb4_general_ci NOT NULL,
+  `id_ruangan` char(36) COLLATE utf8mb4_general_ci NOT NULL,
   `tanggal_sewa` date NOT NULL,
   `waktu_mulai` time NOT NULL,
   `waktu_selesai` time NOT NULL,
-  `surat_peminjaman` varchar(255) NOT NULL,
-  `organisasi_komunitas` varchar(255) NOT NULL,
-  `kegiatan` varchar(255) NOT NULL,
-  `status` varchar(255) NOT NULL,
-  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
-  `updated_at` datetime NOT NULL DEFAULT current_timestamp()
+  `surat_peminjaman` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `organisasi_komunitas` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `kegiatan` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `status` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -105,7 +108,7 @@ INSERT INTO `pengajuan` (`id_pengajuan`, `id_user`, `id_ruangan`, `tanggal_sewa`
 ('7bd17609-90fb-45d4-afcb-660001d5ed66', '9314804d-7484-4ff9-b3ab-009c033438b9', '408a34e5-d98c-4627-8fe4-8c90893daca3', '2025-10-25', '13:00:00', '17:00:00', '1761552400507-Jadwal Kuliah Ganjil 2025-2026 FTI -.pdf', 'BEM Fakultas Teknik', 'Rapat Persiapan Acara Seminar Nasional', 'Disetujui', '2025-10-27 15:06:40', '2025-10-27 15:06:40'),
 ('9b90bc2b-6ac2-432f-b4d5-65d7f3cb319e', '9314804d-7484-4ff9-b3ab-009c033438b9', '408a34e5-d98c-4627-8fe4-8c90893daca3', '2025-10-29', '07:00:00', '17:00:00', '1761665995986-Jadwal Kuliah Ganjil 2025-2026 FTI -.pdf', 'BEM FTI', 'Rapat Koordinasi', 'Disetujui', '2025-10-28 22:39:56', '2025-10-28 22:39:56'),
 ('a9be1bae-41ae-4adb-831a-5cdecbcf1ef7', '9314804d-7484-4ff9-b3ab-009c033438b9', '408a34e5-d98c-4627-8fe4-8c90893daca3', '2025-11-05', '14:00:00', '16:30:00', '1762007983872-Jadwal Kuliah Ganjil 2025-2026 FTI -.pdf', 'BEM Fakultas Teknik', 'Rapat Persiapan Acara Seminar Nasional', 'Disetujui', '2025-11-01 21:39:43', '2025-11-01 21:59:16'),
-('b9faeece-4e31-4197-8302-453c5ff7801c', '9314804d-7484-4ff9-b3ab-009c033438b9', '408a34e5-d98c-4627-8fe4-8c90893daca3', '2025-10-28', '07:00:00', '17:00:00', '1760973833606-Jadwal Kuliah Ganjil 2025-2026 FTI -.pdf', 'BEM Fakultas Teknik', 'Rapat Persiapan Acara Seminar Nasional', 'Disetujui', '2025-10-20 22:23:53', '2025-10-21 22:05:59');
+('b9faeece-4e31-4197-8302-453c5ff7801c', '9314804d-7484-4ff9-b3ab-009c033438b9', '408a34e5-d98c-4627-8fe4-8c90893daca3', '2025-11-23', '07:00:00', '17:00:00', '1760973833606-Jadwal Kuliah Ganjil 2025-2026 FTI -.pdf', 'BEM Fakultas Teknik', 'Rapat Persiapan Acara Seminar Nasional', 'Disetujui', '2025-10-20 22:23:53', '2025-10-21 22:05:59');
 
 -- --------------------------------------------------------
 
@@ -114,11 +117,11 @@ INSERT INTO `pengajuan` (`id_pengajuan`, `id_user`, `id_ruangan`, `tanggal_sewa`
 --
 
 CREATE TABLE `pengajuan_barang` (
-  `id_pengajuan_barang` char(36) NOT NULL,
-  `id_pengajuan` char(36) NOT NULL,
-  `id_barang` char(36) NOT NULL,
-  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
-  `updated_at` datetime NOT NULL DEFAULT current_timestamp()
+  `id_pengajuan_barang` char(36) COLLATE utf8mb4_general_ci NOT NULL,
+  `id_pengajuan` char(36) COLLATE utf8mb4_general_ci NOT NULL,
+  `id_barang` char(36) COLLATE utf8mb4_general_ci NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -148,12 +151,12 @@ INSERT INTO `pengajuan_barang` (`id_pengajuan_barang`, `id_pengajuan`, `id_baran
 --
 
 CREATE TABLE `review` (
-  `id_review` char(36) NOT NULL,
-  `id_pengajuan` char(36) NOT NULL,
-  `rating` int(11) NOT NULL,
-  `review` text NOT NULL,
-  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
-  `updated_at` datetime NOT NULL DEFAULT current_timestamp()
+  `id_review` char(36) COLLATE utf8mb4_general_ci NOT NULL,
+  `id_pengajuan` char(36) COLLATE utf8mb4_general_ci NOT NULL,
+  `rating` int NOT NULL,
+  `review` text COLLATE utf8mb4_general_ci NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -173,11 +176,11 @@ INSERT INTO `review` (`id_review`, `id_pengajuan`, `rating`, `review`, `created_
 --
 
 CREATE TABLE `ruangan` (
-  `id_ruangan` char(36) NOT NULL,
-  `nama_ruangan` varchar(255) NOT NULL,
-  `deskripsi` text NOT NULL,
-  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
-  `updated_at` datetime NOT NULL DEFAULT current_timestamp()
+  `id_ruangan` char(36) COLLATE utf8mb4_general_ci NOT NULL,
+  `nama_ruangan` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `deskripsi` text COLLATE utf8mb4_general_ci NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -186,10 +189,8 @@ CREATE TABLE `ruangan` (
 
 INSERT INTO `ruangan` (`id_ruangan`, `nama_ruangan`, `deskripsi`, `created_at`, `updated_at`) VALUES
 ('408a34e5-d98c-4627-8fe4-8c90893daca3', 'Ruang Basecamp', 'ruang basecamp bisa dijadikan tempat istirahat dan tempat rapat non formal ', '2025-10-09 02:09:05', '2025-10-09 02:09:05'),
-('6fd5fa49-00d2-4bcb-b00c-773636d4ce12', 'Ruang', 'ruangan nyaman', '2025-10-20 20:38:29', '2025-10-20 20:38:29'),
-('e2558546-9ed8-49ac-af27-5439516eebeb', 'Ruang A', 'ruangan nyaman bet', '2025-11-04 23:50:09', '2025-11-04 23:50:09'),
-('e31a115b-d3f4-42e5-9088-c889a2b1dafb', 'Ruang Seminar', 'ruang seminar bisa memuat lebih dari 100 orang', '2025-10-09 01:59:24', '2025-10-09 01:59:24'),
-('f081c100-298c-4495-8333-24b954442211', 'Ruang Gazebo', 'ruang gazebo bisa menampung hingga 15 orang', '2025-10-09 02:30:34', '2025-10-09 02:30:34');
+('e31a115b-d3f4-42e5-9088-c889a2b1dafb', 'Ruang Rapat Tertutup', 'ruang rapat tertutup bisa memuat lebih dari 4 orang', '2025-10-09 01:59:24', '2025-10-09 01:59:24'),
+('f081c100-298c-4495-8333-24b954442211', 'Ruang Outdoor', 'Ruang Outdor bisa menampung hingga 150 orang', '2025-10-09 02:30:34', '2025-10-09 02:30:34');
 
 -- --------------------------------------------------------
 
@@ -198,14 +199,14 @@ INSERT INTO `ruangan` (`id_ruangan`, `nama_ruangan`, `deskripsi`, `created_at`, 
 --
 
 CREATE TABLE `user` (
-  `id_user` char(36) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `username` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `nama` varchar(255) NOT NULL,
-  `nohp` varchar(255) NOT NULL,
-  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
-  `updated_at` datetime NOT NULL DEFAULT current_timestamp()
+  `id_user` char(36) COLLATE utf8mb4_general_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `username` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `password` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `nama` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `nohp` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -214,7 +215,8 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`id_user`, `email`, `username`, `password`, `nama`, `nohp`, `created_at`, `updated_at`) VALUES
 ('529887ac-7215-421d-958a-24886e13ed3f', 'mahir1234@gmail.com', 'mahira123', '$2b$10$LsRRyGxUlHfdGII2.rAHG.qDVC5ZY20ZFnxLo75.1RmyyJF7ysgHC', 'mahiraaaaaaaa sistri', '08154234658', '2025-11-08 22:05:22', '2025-11-08 22:05:22'),
-('9314804d-7484-4ff9-b3ab-009c033438b9', 'mahir@gmail.com', 'mahir', '$2b$10$yShX4KBdMNrXpolkmbG99OMALoHULGi4C6ezr6u0pZe4QQbLMpkyW', 'sistri mahira', '08214555445', '2025-10-13 22:04:40', '2025-10-13 22:12:44'),
+('9314804d-7484-4ff9-b3ab-009c033438b9', 'meutia7@gmail.com', 'mahir', '$2b$10$yShX4KBdMNrXpolkmbG99OMALoHULGi4C6ezr6u0pZe4QQbLMpkyW', 'sistri mahira', '08214555445', '2025-10-13 22:04:40', '2025-11-22 19:07:26'),
+('a1ec561a-b140-4a8a-bde3-68b36847cc5e', 'user1@gmail.com', '12345678', '$2b$10$8By9A8D6km3nyU642Xk1yeEa.7tBURpcT7R1LuTNeEbvGSDF7Pie.', 'user1', '081234567891011', '2025-11-22 20:01:56', '2025-11-22 20:01:56'),
 ('ad5a60e0-1e4f-45ca-b1bc-e12e21aecf49', 'mahir1234@gmail.com', 'mahira123', '$2b$10$K4hGjShQ7k3JMvx2U3BKsO7qgU2B9oxdLlAZQo9vvM9C/pQ.CsYqu', 'mahiraaaaaaaa sistri', '08154234658', '2025-11-08 22:05:22', '2025-11-08 22:05:22'),
 ('b8623ae9-28cb-4196-aebe-f8d4447e6493', 'meutia@gmail.com', 'meutia', '$2b$10$A9SafyMN70OhdJvabsOVIePpq29.sBgx48SfShnkClzVNzT/Hr84C', 'meutia', '081234567891', '2025-10-08 23:52:57', '2025-10-08 23:52:57');
 
